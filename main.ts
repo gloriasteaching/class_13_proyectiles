@@ -16,7 +16,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
-        `, mySprite, 50, 50)
+        `, tree, 50, 50)
     projectile2 = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -34,7 +34,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
-        `, mySprite, -48, 50)
+        `, tree, -48, 50)
     projectile2 = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -52,11 +52,11 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
-        `, mySprite, -48, 27)
+        `, tree, -48, 27)
 })
-let projectile: Sprite = null
+let star: Sprite = null
 let projectile2: Sprite = null
-let mySprite: Sprite = null
+let tree: Sprite = null
 scene.setBackgroundImage(img`
     8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
     8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
@@ -179,7 +179,7 @@ scene.setBackgroundImage(img`
     1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
     1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
     `)
-mySprite = sprites.create(img`
+tree = sprites.create(img`
     ................86..................
     ...........6688867886...............
     ...........8666877688868............
@@ -222,10 +222,29 @@ mySprite = sprites.create(img`
     ...............fceeec...............
     ...............ffceec...............
     `, SpriteKind.Player)
-controller.moveSprite(mySprite)
+controller.moveSprite(tree)
+let snowflake = sprites.createProjectileFromSide(img`
+    . . . . . . . . b . . . . . . . 
+    . . . . . . b d d c . . . . . . 
+    . . . . . b 1 1 d d c . . . . . 
+    . . . . b 1 1 1 d 1 1 b . . . . 
+    . . . . c 1 1 1 d 1 1 1 c c . . 
+    b b b c d 1 1 c c 1 1 d 1 1 b b 
+    b d 1 1 d d b c c c b d 1 1 1 b 
+    b 1 1 1 1 c c . . c d d 1 1 1 b 
+    b 1 1 1 1 c c . . b 1 1 d d c . 
+    . b 1 1 d d b c b b 1 1 b c c . 
+    . . c b d d b 1 1 b b d b c . . 
+    . . c 1 1 d d 1 1 1 d d d b . . 
+    . b d 1 1 1 d 1 1 d 1 1 1 d b . 
+    . b d 1 1 1 d b b d 1 1 1 1 b . 
+    . . b 1 1 d c c b b d 1 1 d b . 
+    . . b b b b . . . b b b b b b . 
+    `, 50, -21)
+snowflake.setPosition(77, 54)
 forever(function () {
     for (let index = 0; index < 4; index++) {
-        projectile = sprites.createProjectileFromSide(img`
+        star = sprites.createProjectileFromSide(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . b . . . . . . . 
             . . . . . . . b d b . . . . . . 
@@ -244,5 +263,5 @@ forever(function () {
             . . . . . . . . . . . . . . . . 
             `, -100, 18)
     }
-    pause(1000)
+    pause(5000)
 })
